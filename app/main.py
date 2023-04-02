@@ -21,14 +21,21 @@ def app():
 
     print("Daily Prediction Sucessful!")
 
-app()
 
-schedule.every(3).minutes.do(app)
-#schedule.every(24).hours.do(app)
+def trigger():
+    '''Trigger function for the task schedule.'''
+    
+    app()
+    
+    schedule.every(2).minutes.do(app)
+    #schedule.every(24).hours.do(app)
 
-while True:
-    # Checks whether a scheduled task is pending to run or not
-    schedule.run_pending()
-    time.sleep(5)
+    while True:
+        # Checks whether a scheduled task is pending to run or not
+        schedule.run_pending()
+        time.sleep(5)
+
+
+trigger()
 
 
